@@ -1,12 +1,6 @@
 import { observable, makeObservable, action } from 'mobx';
 
-interface ILoader {
-  setLoader: (name: string) => void;
-  isLoading: (name: string) => boolean;
-  deleteLoader: (name: string) => void;
-}
-
-export class Loader implements ILoader {
+export class Loader {
   loaders: { [key: string]: boolean };
 
   constructor() {
