@@ -1,8 +1,6 @@
-// Dummy function to catch errors
-
 import { AxiosResponse } from 'axios';
 
-// eslint-disable-next-line
+// Dummy function to catch errors
 export const noop = (): void => {};
 
 export const extractResponse = async (request: Promise<AxiosResponse>) => {
