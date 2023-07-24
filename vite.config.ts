@@ -5,6 +5,7 @@ const path = require('path');
 export default defineConfig({
   resolve: {
     alias: {
+      '@root': path.resolve(__dirname, './src/'),
       '@store': path.resolve(__dirname, './src/store'),
       '@common': path.resolve(__dirname, './src/common'),
       '@components': path.resolve(__dirname, './src/components'),

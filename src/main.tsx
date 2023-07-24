@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RootStore } from '@store/index';
+import { RootStore } from '@root/store';
 import App from './App';
 
 const store = new RootStore();

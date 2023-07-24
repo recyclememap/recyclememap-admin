@@ -6,7 +6,7 @@ export const theme = createTheme({
   },
   palette: {
     primary: {
-      50: '#F0F7FF',
+      50: '#B7D0ED',
       100: '#C2E0FF',
       200: '#99CCF3',
       300: '#66B2FF',
@@ -97,3 +97,30 @@ export const theme = createTheme({
     }
   }
 });
+
+export const sizes = {
+  0: {
+    px: '0px',
+    rem: '0rem'
+  },
+  4: {
+    px: '4px',
+    rem: '0.25rem'
+  },
+  8: {
+    px: '8px',
+    rem: '0.5rem'
+  },
+  16: {
+    px: '16px',
+    rem: '1rem'
+  },
+  32: {
+    px: '32px',
+    rem: '2rem'
+  },
+  64: {
+    px: '64px',
+    rem: '4rem'
+  }
+};
