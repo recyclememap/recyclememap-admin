@@ -1,6 +1,6 @@
 import { RenderResult, render } from '@testing-library/react';
 import { ReactElement } from 'react';
-import { StoreContext } from '@store/index';
+import { StoreContext } from '@root/store';
 import { IRootStore, RootStore } from '@store/RootStore';
 
 export const createStore = (): IRootStore => {

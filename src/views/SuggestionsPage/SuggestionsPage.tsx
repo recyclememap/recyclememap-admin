@@ -1,27 +1,35 @@
+import { useMediaQuery, useTheme } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
-import { LoadingContainer } from '@components/containers';
-import { useStore } from '@store/Context';
-import { SuggestionsLoaders } from '@store/domains/Suggestions/constants';
-import { noop } from '@utils/helpers';
+import { Map, Sidebar } from '@components/layouts';
 
 const SuggestionsPage = observer(() => {
-  const { suggestions, loader } = useStore();
-
-  useEffect(() => {
-    suggestions.getSuggestions().catch(noop);
-  }, [suggestions]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <LoadingContainer
-      isLoading={loader.isLoading(SuggestionsLoaders.GetSuggestions)}
-    >
-      <>
-        {suggestions.suggestionsList?.map((suggestion) => (
-          <div key={suggestion.id}>{suggestion.position}</div>
-        ))}
-      </>
-    </LoadingContainer>
+    <Grid container sx={{ height: '100%' }}>
+      <Grid
+        xs={isMobile ? 12 : 4}
+        sx={{
+          order: isMobile ? 2 : 1,
+          height: isMobile ? '60%' : 'auto',
+          borderRight: '1px solid',
+          borderColor: `${theme.palette.grey[100]}`
+        }}
+      >
+        <Sidebar />
+      </Grid>
+      <Grid
+        xs={isMobile ? 12 : 8}
+        sx={{
+          order: isMobile ? 1 : 2,
+          height: isMobile ? '50%' : 'auto'
+        }}
+      >
+        <Map />
+      </Grid>
+    </Grid>
   );
 });
 

@@ -17,6 +17,7 @@ const config = {
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
+    '^@root(.*)$': '<rootDir>/src$1',
     '^@common(.*)$': '<rootDir>/src/common$1',
     '^@components(.*)$': '<rootDir>/src/components$1',
     '^@utils(.*)$': '<rootDir>/src/utils$1',

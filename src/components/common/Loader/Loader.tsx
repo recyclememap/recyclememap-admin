@@ -1,16 +1,16 @@
-import { Box, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
+import { Flex } from '@components/containers';
 
 export const Loader = () => {
   return (
-    <Box
+    <Flex
       sx={{
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%'
       }}
     >
       <CircularProgress />
-    </Box>
+    </Flex>
   );
 };

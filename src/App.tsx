@@ -1,9 +1,9 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Loader, Snackbar } from '@components/common';
-import { StoreContext, RootStore } from '@store/index';
+import { StoreContext, RootStore } from '@root/store';
 import { theme } from './theme';
 
 interface IApp {
@@ -17,7 +17,7 @@ const SuggestionsPage = lazy(
 function App({ store }: IApp) {
   return (
     <StoreContext.Provider value={store}>
-      <ThemeProvider theme={theme}>
+      <MUIThemeProvider theme={theme}>
         <CssBaseline />
         <Snackbar />
         <Suspense fallback={<Loader />}>
@@ -28,7 +28,7 @@ function App({ store }: IApp) {
             </Routes>
           </BrowserRouter>
         </Suspense>
-      </ThemeProvider>
+      </MUIThemeProvider>
     </StoreContext.Provider>
   );
 }
