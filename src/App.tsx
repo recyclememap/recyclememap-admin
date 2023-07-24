@@ -4,7 +4,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Loader, Snackbar } from '@components/common';
 import { StoreContext, RootStore } from '@root/store';
-import { theme } from './theme/theme';
+import { theme } from './theme';
 
 interface IApp {
   store: RootStore;
