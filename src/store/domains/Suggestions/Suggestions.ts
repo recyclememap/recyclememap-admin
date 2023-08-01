@@ -3,30 +3,30 @@ import { RootStore } from '@store/RootStore';
 import { loader, notify } from '@utils/decorators';
 import { SuggestionsLoaders } from './constants';
 import { suggestionsApi } from './requests';
-import { Suggestions } from './types';
+import { Marker } from './types';
 
 export class SuggestionsStore {
   private rootStore: RootStore;
-  suggestionsList: Suggestions[] | null = null;
+  markersList: Marker[] | null = null;
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
 
     makeObservable(this, {
-      suggestionsList: observable,
-      setSuggestions: action
+      markersList: observable,
+      setMarkers: action
     });
   }
 
-  setSuggestions(suggestions: Suggestions[]): void {
-    this.suggestionsList = suggestions;
+  setMarkers(markers: Marker[]): void {
+    this.markersList = markers;
   }
 
   @notify({ message: '500', details: 'Failed to get suggestions' })
-  @loader(SuggestionsLoaders.GetSuggestions)
-  async getSuggestions(): Promise<void> {
-    const suggestions = await suggestionsApi.getSuggestions();
+  @loader(SuggestionsLoaders.GetSuggestedMarkers)
+  async getSuggestedMarkers(): Promise<void> {
+    const suggestions = await suggestionsApi.getSuggestedMarkers();
 
-    this.setSuggestions(suggestions);
+    this.setMarkers(suggestions);
   }
 }

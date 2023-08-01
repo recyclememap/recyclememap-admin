@@ -1,3 +1,3 @@
 export enum SuggestionsLoaders {
-  GetSuggestions = 'suggestions--get-suggestions'
+  GetSuggestedMarkers = 'suggestions--get-suggested-markers'
 }

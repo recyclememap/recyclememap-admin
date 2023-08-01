@@ -1,5 +1,14 @@
-export type Suggestions = {
+export type SuggestedPosition = number[];
+
+export enum SuggestionProperies {
+  position = 'position'
+}
+
+export type Marker = {
   id: string;
   date: string;
-  position: [number[]];
+  [SuggestionProperies.position]: {
+    suggestedValue: SuggestedPosition[];
+    approvedValue: number[];
+  };
 };

@@ -17,7 +17,6 @@ const config = {
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
-    '^@root(.*)$': '<rootDir>/src$1',
     '^@common(.*)$': '<rootDir>/src/common$1',
     '^@components(.*)$': '<rootDir>/src/components$1',
     '^@utils(.*)$': '<rootDir>/src/utils$1',
@@ -25,6 +24,7 @@ const config = {
     '^@views(.*)$': '<rootDir>/src/views$1',
     '^@static(.*)$': '<rootDir>/src/static$1',
     '^@api(.*)$': '<rootDir>/src/api$1',
+    '^@root(.*)$': '<rootDir>/src$1',
     '\\.(css|css.ts|css.js)$': 'identity-obj-proxy'
   },
   testEnvironment: 'jest-environment-jsdom',
