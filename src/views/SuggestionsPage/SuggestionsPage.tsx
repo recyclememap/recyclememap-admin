@@ -8,12 +8,12 @@ const SuggestionsPage = observer(() => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Grid container sx={{ height: '100%' }}>
+    <Grid container sx={{ height: '100%', overflow: 'hidden' }}>
       <Grid
         xs={isMobile ? 12 : 4}
         sx={{
           order: isMobile ? 2 : 1,
-          height: isMobile ? '60%' : 'auto',
+          height: isMobile ? '50%' : '100%',
           borderRight: '1px solid',
           borderColor: `${theme.palette.grey[100]}`
         }}

@@ -1,12 +1,12 @@
 import { AxiosRequestConfig } from 'axios';
 import { api } from '@api/network';
 import { extractResponse } from '@utils/helpers';
-import { Suggestions } from './types';
+import { Marker } from './types';
 
 export const suggestionsApi = {
-  getSuggestions: (
+  getSuggestedMarkers: (
     options: AxiosRequestConfig = {}
-  ): Promise<Suggestions[]> => {
+  ): Promise<Marker[]> => {
     return extractResponse(api.get('/markers', options));
   }
 };

@@ -20,7 +20,6 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@root/*": ["./*"],
       "@store/*": ["store/*"],
       "@common/*": ["common/*"],
       "@components/*": ["components/*"],
@@ -28,6 +27,7 @@
       "@static/*": ["static/*"],
       "@utils/*": ["utils/*"],
       "@api/*": ["api/*"],
+      "@root/*": ["./*"]
     }
   },
   "include": ["./src"]
