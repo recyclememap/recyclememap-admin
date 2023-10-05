@@ -1,3 +1,5 @@
+import { WasteTypes } from '@store/domains/Suggestions/types';
+
 export const MOCK_SUGGESTED_VALUES = [
   [123, 456],
   [222, 333]
@@ -12,7 +14,11 @@ export const MockMarker = [
       suggestedValue: MOCK_SUGGESTED_VALUES,
       approvedValue: []
     },
-    test: {
+    wasteTypes: {
+      suggestedValue: [],
+      approvedValue: [WasteTypes.Batteries]
+    },
+    address: {
       suggestedValue: [],
       approvedValue: 'test'
     },
@@ -24,7 +30,11 @@ export const MockMarker = [
       suggestedValue: MOCK_SUGGESTED_VALUES,
       approvedValue: []
     },
-    test: {
+    wasteTypes: {
+      suggestedValue: [],
+      approvedValue: [WasteTypes.Batteries]
+    },
+    address: {
       suggestedValue: [],
       approvedValue: 'test'
     },

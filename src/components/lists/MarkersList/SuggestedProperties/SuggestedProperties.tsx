@@ -2,7 +2,7 @@ import { List, ListItem, ListItemText } from '@mui/material';
 import { Carousel } from '@components/common';
 import { Flex } from '@components/containers';
 import { sizes } from '@root/theme';
-import { Marker, SuggestionProperies } from '@store/domains/Suggestions/types';
+import { Marker, SuggestionProperties } from '@store/domains/Suggestions/types';
 import { getProperyContent } from './helpers';
 
 interface ISuggestedProperties {
@@ -27,7 +27,7 @@ export const SuggestedProperties = ({ marker }: ISuggestedProperties) => {
                 <Carousel>
                   {value.suggestedValue.map((suggestedValue, index) =>
                     getProperyContent(
-                      suggestedPropertyName as SuggestionProperies,
+                      suggestedPropertyName as SuggestionProperties,
                       suggestedValue,
                       index
                     )
