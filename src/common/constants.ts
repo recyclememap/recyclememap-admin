@@ -16,3 +16,10 @@ export const MAP_SETUP = {
   zoom: INITIAL_MAP_ZOOM,
   minZoom: MIN_MAP_ZOOM
 };
+
+export enum StatusCodes {
+  Ok = 200,
+  BadRequest = 400,
+  Unathorized = 401,
+  InternalServerError = 500
+}
