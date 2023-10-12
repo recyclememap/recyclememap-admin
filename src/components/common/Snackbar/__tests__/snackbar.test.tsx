@@ -15,7 +15,7 @@ describe('LoadingContainer logic', () => {
   it('opens snackbar if there is notification in store', () => {
     store.notification.setCurrentNotification(MOCK_SUCCESS_NOTIFICATION);
 
-    renderWithStore(store, <Snackbar />);
+    renderWithStore(store, <Snackbar />, false);
 
     screen.getByRole('presentation');
   });
@@ -23,7 +23,7 @@ describe('LoadingContainer logic', () => {
   it('closes snackbar and cleans notification from store if close icon is clicked', async () => {
     store.notification.setCurrentNotification(MOCK_SUCCESS_NOTIFICATION);
 
-    renderWithStore(store, <Snackbar />);
+    renderWithStore(store, <Snackbar />, false);
 
     screen.getByRole('presentation');
 
@@ -36,7 +36,7 @@ describe('LoadingContainer logic', () => {
   it('does not close snackbar on click outside snackbar', async () => {
     store.notification.setCurrentNotification(MOCK_SUCCESS_NOTIFICATION);
 
-    renderWithStore(store, <Snackbar />);
+    renderWithStore(store, <Snackbar />, false);
 
     screen.getByRole('presentation');
 

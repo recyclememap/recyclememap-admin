@@ -1,3 +1,4 @@
+import { StatusCodes } from '@common/constants';
 import {
   NotificationModel,
   NotificationType
@@ -57,14 +58,23 @@ export function notify<T>(
         }
 
         return result;
-      } catch (e) {
+      } catch (e: any) {
         this.rootStore.notification.clearNotification();
 
-        // TODO: extract error message from backend error first
-        this.rootStore.notification.setCurrentNotification({
-          type: NotificationType.Error,
-          ...errorNotification
-        });
+        if (e?.response?.status === StatusCodes.Unathorized) {
+          this.rootStore.notification.setCurrentNotification({
+            type: NotificationType.Error,
+            message: 'Unauthorized',
+            details: ''
+          });
+        } else {
+          // TODO: extract error message from backend error first
+          this.rootStore.notification.setCurrentNotification({
+            type: NotificationType.Error,
+            ...errorNotification
+          });
+        }
+
         throw e;
       }
     };
