@@ -1,25 +1,29 @@
-import { Collapse, List, ListItem } from '@mui/material';
+import { Button, List, ListItem } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
-import { GenericObject } from '@common/types';
+import { Collapse } from '@components/common';
 import { Flex } from '@components/containers';
+import {
+  ApproveConfirmationDialog,
+  DeclineConfirmationDialog
+} from '@components/dialogs';
 import { sizes } from '@root/theme';
+import { Marker } from '@store/domains/Suggestions/types';
 import { useStore } from '@store/index';
-import { MarkerTitle } from './MarkerTitle/MarkerTitle';
 import { SuggestedProperties } from './SuggestedProperties/SuggestedProperties';
 
 export const MarkersList = observer(() => {
   const { suggestions } = useStore();
+  const [isApproveDialogOpen, setIsApproveDialogOpen] = useState(false);
+  const [isDeclineDialogOpen, setIsDeclineDialogOpen] = useState(false);
 
-  const [isSuggestionOpen, setIsSuggestionsOpen] = useState(
-    {} as GenericObject
-  );
+  const createNewMarkerCandidate = (
+    marker: Marker,
+    isApprove: boolean = true
+  ) => {
+    suggestions.createNewMarkerCandidate(marker, isApprove);
 
-  const expandSuggestions = (id: string) => {
-    setIsSuggestionsOpen((prevState) => ({
-      ...prevState,
-      [id]: !prevState[id]
-    }));
+    isApprove ? setIsApproveDialogOpen(true) : setIsDeclineDialogOpen(true);
   };
 
   return (
@@ -35,24 +39,53 @@ export const MarkersList = observer(() => {
                 borderRadius: sizes[8].rem
               }}
             >
-              <Flex sx={{ flexDirection: 'column', flex: 1, minWidth: 0 }}>
-                <MarkerTitle
-                  markerId={marker.id}
-                  isSuggestionOpen={isSuggestionOpen[marker.id]}
-                  expandSuggestions={expandSuggestions}
+              <Collapse
+                isHeader={true}
+                title={`Marker id: ${marker.id.slice(-5)}`}
+              >
+                <SuggestedProperties
+                  marker={marker}
+                  onApprove={() => setIsApproveDialogOpen(true)}
+                  onDecline={() => setIsDeclineDialogOpen(true)}
                 />
-                <Collapse
-                  in={isSuggestionOpen[marker.id]}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <SuggestedProperties marker={marker} />
-                </Collapse>
-              </Flex>
+                {marker.position.approvedValue.length === 0 && (
+                  <Flex
+                    sx={{
+                      justifyContent: 'flex-end',
+                      my: sizes[8].rem,
+                      gap: sizes[16].rem
+                    }}
+                  >
+                    <Button
+                      onClick={() => createNewMarkerCandidate(marker)}
+                      variant="contained"
+                    >
+                      approve
+                    </Button>
+                    <Button
+                      onClick={() => createNewMarkerCandidate(marker, false)}
+                      variant="contained"
+                      color="error"
+                    >
+                      decline
+                    </Button>
+                  </Flex>
+                )}
+              </Collapse>
             </ListItem>
           ))}
         </List>
-      )}{' '}
+      )}
+      {isApproveDialogOpen && !!suggestions.markerCandidate && (
+        <ApproveConfirmationDialog
+          onClose={() => setIsApproveDialogOpen(false)}
+        />
+      )}
+      {isDeclineDialogOpen && !!suggestions.markerCandidate && (
+        <DeclineConfirmationDialog
+          onClose={() => setIsDeclineDialogOpen(false)}
+        />
+      )}
     </>
   );
 });

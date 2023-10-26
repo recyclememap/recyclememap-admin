@@ -59,6 +59,7 @@ export function notify<T>(
 
         return result;
       } catch (e: any) {
+        console.log(e);
         this.rootStore.notification.clearNotification();
 
         if (e?.response?.status === StatusCodes.Unathorized) {

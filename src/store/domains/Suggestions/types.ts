@@ -1,4 +1,5 @@
-export type SuggestedPosition = number[];
+import { LatLngTuple } from 'leaflet';
+import { MakePartial } from '@common/types';
 
 export enum WasteTypes {
   Packing = 'packing',
@@ -10,25 +11,50 @@ export enum WasteTypes {
   Glass = 'glass'
 }
 
-export enum SuggestionProperties {
+export enum MarkerProperties {
   position = 'position',
   wasteTypes = 'wasteTypes',
   address = 'address'
 }
 
+type PropertyType<S, A> = {
+  suggestedValue: S;
+  approvedValue: A;
+};
+
+type PositionType = PropertyType<LatLngTuple[], LatLngTuple | []>;
+type WateTypesType = PropertyType<WasteTypes[][], WasteTypes[]>;
+type AddressType = PropertyType<string[], string>;
+
 export type Marker = {
   id: string;
   date: string;
-  [SuggestionProperties.position]: {
-    suggestedValue: SuggestedPosition[];
-    approvedValue: number[];
-  };
-  [SuggestionProperties.wasteTypes]: {
-    suggestedValue: WasteTypes[][];
-    approvedValue: WasteTypes[];
-  };
-  [SuggestionProperties.address]: {
-    suggestedValue: string[];
-    approvedValue: string;
-  };
+  [MarkerProperties.position]: PositionType;
+  [MarkerProperties.wasteTypes]: WateTypesType;
+  [MarkerProperties.address]: AddressType;
+};
+
+export type CurrentMarker = {
+  id: string;
+  date: string;
+  [MarkerProperties.position]: LatLngTuple;
+  [MarkerProperties.wasteTypes]: WasteTypes[];
+  [MarkerProperties.address]: string;
+};
+
+export type ApprovedMarker = MakePartial<{
+  [MarkerProperties.position]: PositionType;
+  [MarkerProperties.wasteTypes]: WateTypesType;
+  [MarkerProperties.address]: AddressType;
+}>;
+
+export enum MarkerCandidateType {
+  newMarker = 'newMarker',
+  update = 'update'
+}
+
+export type MarkerCandidate = {
+  id: string;
+  marker?: ApprovedMarker;
+  type?: MarkerCandidateType;
 };

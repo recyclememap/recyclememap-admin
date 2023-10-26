@@ -3,7 +3,8 @@ const esmModules = ['react-leaflet', '@react-leaflet\\+core'];
 const config = {
   transform: {
     // We need to transform both ts and js files to support node_modules ES6
-    '^.+\\.(ts|tsx|js|jsx)$': ['ts-jest']
+    '^.+\\.(ts|tsx|js|jsx)$': ['ts-jest'],
+    '^.+\\.svg$': 'jest-transform-stub'
   },
   // By default jest ignore node_modules when transfrom ES6 export to CommonJS.
   // We setup transforming choosen node_modules here
