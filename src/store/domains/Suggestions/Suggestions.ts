@@ -37,7 +37,7 @@ export class SuggestionsStore {
     this.markersList = markers;
   }
 
-  setCurrentMarker(currentMarker: CurrentMarker): void {
+  setCurrentMarker(currentMarker: CurrentMarker | null): void {
     this.currentMarker = currentMarker;
   }
 
@@ -53,13 +53,16 @@ export class SuggestionsStore {
     if (isApprove) {
       approvedMarker.marker = {
         [MarkerProperties.position]: {
-          approvedValue: marker.position.suggestedValue[0]
+          approvedValue: marker.position.suggestedValue[0],
+          suggestedValue: []
         },
         [MarkerProperties.wasteTypes]: {
-          approvedValue: marker.wasteTypes.suggestedValue[0]
+          approvedValue: marker.wasteTypes.suggestedValue[0],
+          suggestedValue: []
         },
         [MarkerProperties.address]: {
-          approvedValue: marker.address.suggestedValue[0]
+          approvedValue: marker.address.suggestedValue[0],
+          suggestedValue: []
         }
       };
     }
@@ -90,6 +93,7 @@ export class SuggestionsStore {
     } else {
       approvedMarker = {
         [MarkerProperties[propertyName]]: {
+          approvedValue: marker[propertyName].approvedValue,
           suggestedValue
         }
       };

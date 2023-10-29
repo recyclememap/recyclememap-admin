@@ -22,6 +22,7 @@ export const DeclineConfirmationDialog = observer(
     const declineMarker = async () => {
       try {
         await suggestions.declineMarker();
+        await suggestions.setCurrentMarker(null);
         await suggestions.getSuggestedMarkers();
 
         onClose();

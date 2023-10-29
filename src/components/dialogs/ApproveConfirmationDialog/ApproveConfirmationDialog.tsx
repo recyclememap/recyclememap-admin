@@ -26,6 +26,7 @@ export const ApproveConfirmationDialog = observer(
     const approveMarker = async () => {
       try {
         await suggestions.updateMarker();
+        await suggestions.setCurrentMarker(null);
         await suggestions.getSuggestedMarkers();
 
         onClose();
