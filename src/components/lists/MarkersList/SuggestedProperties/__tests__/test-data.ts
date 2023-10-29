@@ -83,6 +83,7 @@ export const DECLINE_PROPERTY_CANDIDATE = {
   id: 'testId',
   marker: {
     [MarkerProperties.address]: {
+      approvedValue: APPROVED_ADDRESS,
       suggestedValue: []
     }
   },

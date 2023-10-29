@@ -72,13 +72,16 @@ export const NEW_MARKER_CANDIDATE = {
   id: NEW_SUGGESTED_MARKERS.id,
   marker: {
     [MarkerProperties.position]: {
-      approvedValue: NEW_SUGGESTED_MARKERS.position.suggestedValue[0]
+      approvedValue: NEW_SUGGESTED_MARKERS.position.suggestedValue[0],
+      suggestedValue: []
     },
     [MarkerProperties.wasteTypes]: {
-      approvedValue: NEW_SUGGESTED_MARKERS.wasteTypes.suggestedValue[0]
+      approvedValue: NEW_SUGGESTED_MARKERS.wasteTypes.suggestedValue[0],
+      suggestedValue: []
     },
     [MarkerProperties.address]: {
-      approvedValue: NEW_SUGGESTED_MARKERS.address.suggestedValue[0]
+      approvedValue: NEW_SUGGESTED_MARKERS.address.suggestedValue[0],
+      suggestedValue: []
     }
   }
 };
