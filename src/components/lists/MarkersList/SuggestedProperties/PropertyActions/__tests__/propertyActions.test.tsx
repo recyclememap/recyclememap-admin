@@ -28,7 +28,7 @@ describe('PropertyActions logic', () => {
     expect(createMarkerPropertyToApproveSpy).toBeCalledWith(true);
   });
 
-  it('calss createMarkerPropertyToApprove with correct argument on apdeclinerove button click', async () => {
+  it('calls createMarkerPropertyToApprove with correct argument on apdeclinerove button click', async () => {
     const createMarkerPropertyToApproveSpy = jest.fn();
 
     renderWithStore(
