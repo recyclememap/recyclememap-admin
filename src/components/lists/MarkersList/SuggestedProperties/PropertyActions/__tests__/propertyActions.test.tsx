@@ -12,7 +12,7 @@ describe('PropertyActions logic', () => {
     store = createStore();
   });
 
-  it('calss createMarkerPropertyToApprove with correct argument on approve button click', async () => {
+  it('calls createMarkerPropertyToApprove with correct argument on approve button click', async () => {
     const createMarkerPropertyToApproveSpy = jest.fn();
 
     renderWithStore(
