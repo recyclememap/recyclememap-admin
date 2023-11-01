@@ -1,18 +1,37 @@
-import { render, screen } from '@testing-library/react';
-import { SuggestionProperties } from '@store/domains/Suggestions/types';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { MarkerProperties } from '@store/domains/Suggestions/types';
+import { IRootStore } from '@store/RootStore';
+import { noop } from '@utils/helpers';
+import { createStore, renderWithStore } from '@utils/tests/helpers';
 import { SuggestedProperties } from '../SuggestedProperties';
-import { MockMarker, getSuggestedValues } from './test-data';
+import { NEW_SUGGESTED_MARKERS, TextElements } from './test-data';
 
-// TODO: Add tests for wasteTypes and address as well
 describe('SuggestedProperties visual', () => {
-  it('renders correct elements', () => {
-    render(<SuggestedProperties marker={MockMarker} />);
+  let store: IRootStore;
 
-    screen.getByText(SuggestionProperties.position);
+  beforeEach(() => {
+    store = createStore();
+  });
 
-    getSuggestedValues().forEach((suggestedValue) => {
-      screen.getByText(suggestedValue.Lat);
-      screen.getByText(suggestedValue.Long);
-    });
+  it('renders correct elements', async () => {
+    renderWithStore(
+      store,
+      <SuggestedProperties
+        marker={NEW_SUGGESTED_MARKERS}
+        onApprove={noop}
+        onDecline={noop}
+      />
+    );
+
+    await userEvent.click(screen.getByText(MarkerProperties.position));
+    screen.getByText(TextElements.Lat);
+    screen.getByText(TextElements.Long);
+
+    await userEvent.click(screen.getByText(MarkerProperties.wasteTypes));
+    screen.getByText(TextElements.WasteTypes);
+
+    await userEvent.click(screen.getByText(MarkerProperties.address));
+    screen.getByText(TextElements.Address);
   });
 });

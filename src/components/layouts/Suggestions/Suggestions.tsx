@@ -17,7 +17,11 @@ export const Suggestions = observer(() => {
     <LoadingContainer
       isLoading={loader.isLoading(SuggestionsLoaders.GetSuggestedMarkers)}
     >
-      <MarkersList />
+      {suggestions.markersList && suggestions.markersList?.length > 0 ? (
+        <MarkersList />
+      ) : (
+        'No suggestions'
+      )}
     </LoadingContainer>
   );
 });

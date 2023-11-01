@@ -1,3 +1,4 @@
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 const path = require('path');
@@ -22,7 +23,8 @@ export default defineConfig({
           plugins: ['decorators-legacy', 'classProperties']
         }
       }
-    })
+    }),
+    vanillaExtractPlugin()
   ],
   server: {
     host: '127.0.0.1',

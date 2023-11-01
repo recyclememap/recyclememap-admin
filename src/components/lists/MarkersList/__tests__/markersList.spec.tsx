@@ -2,9 +2,9 @@ import { screen } from '@testing-library/react';
 import { IRootStore } from '@store/RootStore';
 import { createStore, renderWithStore } from '@utils/tests/helpers';
 import { MarkersList } from '../MarkersList';
-import { MockMarker, TEST_MARKER_IDS } from './test-data';
+import { SUGGESTED_MARKERS, TextElements } from './test-data';
 
-describe('SuggestedProperties visual', () => {
+describe('MarkersList visual', () => {
   let store: IRootStore;
 
   beforeEach(() => {
@@ -12,11 +12,11 @@ describe('SuggestedProperties visual', () => {
   });
 
   it('renders correct elements', () => {
-    store.suggestions.setMarkers(MockMarker);
+    store.suggestions.setMarkers(SUGGESTED_MARKERS);
+
     renderWithStore(store, <MarkersList />);
 
-    TEST_MARKER_IDS.forEach((markerId) => {
-      screen.getByText(markerId);
-    });
+    screen.getByText(TextElements.MarkerHeader1);
+    screen.getByText(TextElements.MarkerHeader2);
   });
 });

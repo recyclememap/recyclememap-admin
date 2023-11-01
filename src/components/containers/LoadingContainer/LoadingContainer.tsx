@@ -1,4 +1,4 @@
-import { PropsWithChildren } from '@common/types';
+import { PropsWithChildren } from 'react';
 import { Loader } from '@components/common';
 
 interface IProps {
