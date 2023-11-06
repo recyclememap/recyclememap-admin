@@ -1,6 +1,6 @@
-import { LatLngExpression } from 'leaflet';
+import { LatLngTuple } from 'leaflet';
 
-export const ASHDOD_COORDINATES = [31.792, 34.645] as LatLngExpression;
+export const ASHDOD_COORDINATES = [31.792, 34.645] as LatLngTuple;
 
 export const INITIAL_MAP_ZOOM = 13; // Scale 1:13
 export const MAX_MAP_ZOOM = 19; // Scale 1:19

@@ -1,4 +1,4 @@
-import { LatLngExpression } from 'leaflet';
+import { LatLngTuple } from 'leaflet';
 import * as Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
 import { Marker as LeafletMarker, Popup as LeafletPopper } from 'react-leaflet';
@@ -9,7 +9,7 @@ import { Popper } from './Popper/Popper';
 type PlacemarkProps = {
   icons: flatIconsKeys[];
   address: string;
-  position: LatLngExpression;
+  position: LatLngTuple;
 };
 
 export const Placemark = ({ icons, address, position }: PlacemarkProps) => {
