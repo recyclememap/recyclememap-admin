@@ -64,7 +64,20 @@ export const SuggestedProperties = observer(
               <Collapse title={suggestedPropertyName}>
                 <List disablePadding>
                   {!isNewMarker && (
-                    <ListItemButton>
+                    <ListItemButton
+                      sx={{
+                        '&.MuiListItemButton-root': {
+                          pl: 0
+                        }
+                      }}
+                      onClick={() =>
+                        setCurrentMarker(
+                          marker,
+                          suggestedPropertyName as MarkerProperties,
+                          approvedValue
+                        )
+                      }
+                    >
                       <ListItemIcon sx={{ minWidth: 0, mr: sizes[8].rem }}>
                         <Check
                           color="primary"
