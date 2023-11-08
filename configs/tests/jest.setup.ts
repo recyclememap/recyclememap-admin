@@ -4,6 +4,13 @@ import '@testing-library/jest-dom';
 
 global.TextEncoder = TextEncoder;
 
+jest.mock('@common/env', () => ({
+  API_URL: 'http://127.0.0.1:3102',
+  AUTH_DOMAIN: 'http://auth.com',
+  AUTH_CLIENT_ID: 'clientId',
+  AUTH_AUDIENCE: 'audience'
+}));
+
 global.beforeEach(() => {
   const apiMock = nock('http://127.0.0.1:3102/api');
 
