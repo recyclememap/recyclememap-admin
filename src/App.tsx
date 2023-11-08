@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AUTH_DOMAIN, AUTH_CLIENT_ID, AUTH_AUDIENCE } from '@common/env';
 import { Loader, Snackbar } from '@components/common';
 import { ProtectedWrapper } from '@components/hocs';
 import { StoreContext, RootStore } from '@root/store';
@@ -20,11 +21,11 @@ const SuggestionsPage = lazy(
 function App({ store }: IApp) {
   return (
     <Auth0Provider
-      domain={import.meta.env.VITE_AUTH_DOMAIN}
-      clientId={import.meta.env.VITE_AUTH_CLIENT_ID}
+      domain={AUTH_DOMAIN}
+      clientId={AUTH_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: import.meta.env.VITE_AUTH_AUDIENCE
+        audience: AUTH_AUDIENCE
       }}
     >
       <StoreContext.Provider value={store}>
